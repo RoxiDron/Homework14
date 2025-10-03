@@ -28,10 +28,15 @@ public class ProductBasket {
             return;
         }
 
+        int specialCount = 0;
         for (int i = 0; i < size; i++) {
-            System.out.println(products[i].getName() + ": " + products[i].getPrice());
+            System.out.println(products[i].toString());
+            if (products[i].isSpecial()) {
+                specialCount++;
+            }
         }
         System.out.println("Итого: " + getTotalPrice());
+        System.out.println("Специальных товаров: " + specialCount);
     }
 
     public boolean containsProduct(String name) {
@@ -45,8 +50,8 @@ public class ProductBasket {
 
     public void clear() {
         for (int i = 0; i < size; i++) {
-            products[i] = null;
+            products[i] = null;  // Очищаем ссылки на объекты
         }
-        size = 0;
+        size = 0;  // Обнуляем счетчик элементов
     }
 }
