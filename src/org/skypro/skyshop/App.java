@@ -1,19 +1,20 @@
 package org.skypro.skyshop;
 
 import org.skypro.skyshop.basket.ProductBasket;
-import org.skypro.skyshop.product.Product;
+import org.skypro.skyshop.product.DiscountProduct;
+import org.skypro.skyshop.product.FixPriceProduct;
+import org.skypro.skyshop.product.SimpleProduct;
 
 public class App {
     public static void main(String[] args) {
-        // Создаем косметические продукты
-        Product lipstick = new Product("Помада Rouge", 1500);
-        Product foundation = new Product("Тональный крем Perfect", 2500);
-        Product mascara = new Product("Тушь для ресниц Volume", 1200);
-        Product perfume = new Product("Духи Fleur", 5000);
-        Product faceCream = new Product("Крем для лица Hydra", 2000);
-        Product eyeShadow = new Product("Палетка теней", 1800);
-        Product missingProduct = new Product("Пудра матирующая", 1600);
-
+        // Создаем разные типы продуктов
+        SimpleProduct lipstick = new SimpleProduct("Помада Rouge", 1500);
+        DiscountProduct foundation = new DiscountProduct("Тональный крем Perfect", 2500, 20); // скидка 20%
+        SimpleProduct mascara = new SimpleProduct("Тушь для ресниц Volume", 1200);
+        FixPriceProduct perfume = new FixPriceProduct("Духи Fleur");
+        SimpleProduct faceCream = new SimpleProduct("Крем для лица Hydra", 2000);
+        DiscountProduct eyeShadow = new DiscountProduct("Палетка теней", 1800, 15); // скидка 15%
+        SimpleProduct missingProduct = new SimpleProduct("Пудра матирующая", 1600);
 
         ProductBasket basket = new ProductBasket();
 
@@ -21,14 +22,12 @@ public class App {
         basket.addProduct(lipstick);
         System.out.println("Помада добавлена успешно!");
 
-
-        System.out.println("\n2. Добавление нескольких продуктов:");
+        System.out.println("\n2. Добавление нескольких продуктов разных типов:");
         basket.addProduct(foundation);
         basket.addProduct(mascara);
         basket.addProduct(perfume);
         basket.addProduct(faceCream);
         System.out.println("Основные товары добавлены!");
-
 
         System.out.println("\n3. Попытка добавить в заполненную корзину:");
         basket.addProduct(eyeShadow);
